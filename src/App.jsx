@@ -43,7 +43,7 @@ function App() {
       />
       <button onClick={() => buscarNome(pesquisa)}>🔍Pesquisar</button>
 
-      {usuarios.length === 0 ? (
+      {usuarios.length == 0 ? (
         <p>Lista vazia...</p>
       ) : (
         <ul>
@@ -55,7 +55,7 @@ function App() {
                 width={30}
               />{" "}
               Sr(a) {i.firstName} {i.lastName} tem {i.age} anos.
-              <button onClick={() => mostrarinfo(i)}>Ver informações</button>
+              <button onClick={() => mostrarinfo(i)} > Ver informações </button>
             </li>
           ))}
         </ul>
