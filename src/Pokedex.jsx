@@ -5,7 +5,9 @@ function Pokedex() {
   const [pesquisa, setPesquisa] = useState("");
 
   async function buscarPokemon() {
-    const resposta = await fetch(`https://pokeapi.co/api/v2/pokemon/${pesquisa.toLowerCase()}`);
+    if (!pesquisa.trim()) return;
+
+    const resposta = await fetch(`https://pokeapi.co/api/v2/pokemon/${pesquisa.toLowerCase().trim()}`);
     const dados = await resposta.json();
     setPokemon(dados);
   }
@@ -20,18 +22,34 @@ function Pokedex() {
         onChange={(e) => setPesquisa(e.target.value)}
         placeholder="Digite o Pokemon..."
       />
-      <button onClick={() => buscarPokemon(pesquisa)}>Pesquisar</button>
+      <button onClick={buscarPokemon}>Pesquisar</button>
 
       <hr />
 
       {pokemon && (
         <div>
-          <h2>{pokemon.name}</h2>
-          <p>Tipo: {pokemon.types[0].type.name}</p>
-          <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+          <h2>Nome: {pokemon.name}</h2>
+          
+          <p>
+            Tipo: {pokemon.types?.map((i) => i.type.name).join(", ")}
+          </p>
+
+          <img
+            width= {200}
+            src={pokemon.sprites?.versions?.["generation-v"]?.["black-white"]?.animated?.front_default}
+            alt={pokemon.name}
+          />
+
+          <p>Altura: {pokemon.height / 10} m</p>
+          <p>Peso: {pokemon.weight / 10} kg</p>
+          <p>Habilidades: {pokemon.abilities?.map( i => i.ability.name + " ") } </p>
+
         </div>
+
       )}
+
     </div>
+
   );
 }
 

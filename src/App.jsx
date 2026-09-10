@@ -47,9 +47,11 @@ function App() {
         <p>Lista vazia...</p>
       ) : (
         <ul>
+
           {usuarios.map((i) => (
             <li key={i.id}>
               <img
+                width= {50}
                 src={`https://api.dicebear.com/10.x/initials/svg?seed=${i.firstName}`}
                 alt={i.lastName}
                 width={30}
@@ -57,6 +59,7 @@ function App() {
               Sr(a) {i.firstName} {i.lastName} tem {i.age} anos.
               <button onClick={() => mostrarinfo(i)} > Ver informações </button>
             </li>
+
           ))}
         </ul>
       )}
