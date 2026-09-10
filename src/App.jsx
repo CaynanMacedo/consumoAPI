@@ -51,7 +51,6 @@ function App() {
           {usuarios.map((i) => (
             <li key={i.id}>
               <img
-                width= {50}
                 src={`https://api.dicebear.com/10.x/initials/svg?seed=${i.firstName}`}
                 alt={i.lastName}
                 width={30}

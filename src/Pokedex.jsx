@@ -42,7 +42,7 @@ function Pokedex() {
 
           <p>Altura: {pokemon.height / 10} m</p>
           <p>Peso: {pokemon.weight / 10} kg</p>
-          <p>Habilidades: {pokemon.abilities?.map( i => i.ability.name + " ") } </p>
+          <p>Habilidades: {pokemon.abilities?.map( i => i.ability.name + ", ") } </p>
 
         </div>
 
